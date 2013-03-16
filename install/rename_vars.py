@@ -99,7 +99,7 @@ def rename_class(data, indent='3', MCP=False):
      
             # Could be a single-line method
             skip = True
-            if not re.search(r'(}|\);|throws .+?;)$', line):
+            if not re.search(r'}|\)', line):
                 inside_method = True
      
         elif re.search(r'^ {%s}}$' % indent, line):
