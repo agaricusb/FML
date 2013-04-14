@@ -149,13 +149,14 @@ public class FMLDeobfuscatingRemapper extends Remapper {
     }
 
     @SuppressWarnings("unchecked")
-    private String getFieldType(String owner, String name) {
+    private String getFieldType(String owner, String name) 
+    {
         try
         {
             byte[] classBytes = classLoader.getClassBytes(owner);
             if (classBytes == null)
             {
-                return "";
+                return null;
             }
             ClassReader cr = new ClassReader(classBytes);
             ClassNode classNode = new ClassNode();
@@ -170,7 +171,7 @@ public class FMLDeobfuscatingRemapper extends Remapper {
         {
             e.printStackTrace();
         }
-        return "";
+        return null;
     }
 
     private void parseClass(Builder<String, String> builder, String[] parts)
