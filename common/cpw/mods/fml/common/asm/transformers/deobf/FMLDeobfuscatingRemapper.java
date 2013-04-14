@@ -139,12 +139,12 @@ public class FMLDeobfuscatingRemapper extends Remapper {
         String newSrg = parts[2];
         int lastNew = newSrg.lastIndexOf('/');
         String newName = newSrg.substring(lastNew+1);
-        oldName += ":" + getFieldType(cl, oldName);
         if (!rawFieldMaps.containsKey(cl))
         {
             rawFieldMaps.put(cl, Maps.<String,String>newHashMap());
         }
-        rawFieldMaps.get(cl).put(oldName, newName);
+        rawFieldMaps.get(cl).put(oldName + ":" + getFieldType(cl, oldName), newName);
+        rawFieldMaps.get(cl).put(oldName + ":null", newName);
     }
 
     @SuppressWarnings("unchecked")
